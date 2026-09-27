@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Sangam—Muzaffarabad</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60'%3E%3Cpath d='M6 44 C20 44 25 30 29 30' stroke='%2335D9A8' stroke-width='4.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M6 52 C20 52 25 31 29 30' stroke='%2335D9A8' stroke-width='4.5' fill='none' stroke-linecap='round' opacity='.45'/%3E%3Cpath d='M29 30 C40 30 46 30 54 30' stroke='%23D9B65B' stroke-width='5' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='29' cy='30' r='4.2' fill='%23E1543A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-deep:#050e0a; --bg1:#0b1f17; --bg2:#132a20;
+  --panel:rgba(255,255,255,.045); --line:rgba(255,255,255,.10);
+  --ink:#EAF3ED; --text-dim:#8FA79A;
+  --gold:#D9B65B; --gold-tint:rgba(217,182,91,.16);
+  --mint:#35D9A8;
+  --primary:#17966F; --primary-strong:#1FB584;
+  --safe:#33C08A; --safe-tint:rgba(51,192,138,.16);
+  --rising:#E0A63E; --rising-tint:rgba(224,166,62,.18);
+  --danger:#E1543A; --danger-tint:rgba(225,84,58,.18);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+
+/* Scrollbars hide karne ke liye */
+::-webkit-scrollbar { display: none; }
+* { -ms-overflow-style: none; scrollbar-width: none; }
+
+.ur{font-family:'Noto Nastaliq Urdu',serif;direction:rtl;line-height:2.05;}
+body{font-family:'Inter',sans-serif;background:#020705;color:var(--ink);}
+.page-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px 14px;
+  background:radial-gradient(ellipse at 50% -10%,#16352a 0%,#05100b 55%,#020705 100%);}
+
+/* ---- device frame ---- */
+.phone-shell{position:relative;display:inline-block;padding:16px 14px 26px;border-radius:52px;
+  background:linear-gradient(155deg,#1b1d1a 0%,#080907 65%);
+  box-shadow:0 30px 70px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.05) inset;}
+.phone-shell:before{content:'';position:absolute;inset:0;border-radius:52px;pointer-events:none;
+  background:linear-gradient(160deg,rgba(255,255,255,.06),transparent 35%);}
+.notch{position:absolute;top:14px;left:50%;transform:translateX(-50%);width:86px;height:24px;
+  background:#080907;border-radius:16px;z-index:50;display:flex;align-items:center;justify-content:center;}
+.notch:after{content:'';width:7px;height:7px;border-radius:50%;background:#16352a;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);}
+.side-btn{position:absolute;background:linear-gradient(180deg,#2a2c27,#0a0b09);border-radius:3px;z-index:40;}
+.power{right:-3px;top:150px;width:3px;height:80px;}
+.vol-up{left:-3px;top:120px;width:3px;height:42px;}
+.vol-down{left:-3px;top:172px;width:3px;height:42px;}
+.home-indicator{position:absolute;bottom:7px;left:50%;transform:translateX(-50%);width:110px;height:4px;
+  border-radius:3px;background:rgba(255,255,255,.35);z-index:60;}
+
+.app-frame{position:relative;width:376px;max-width:88vw;height:780px;max-height:80vh;border-radius:38px;
+  overflow:hidden;border:1px solid rgba(255,255,255,.06);
+  background:linear-gradient(165deg,var(--bg2) 0%,var(--bg1) 55%,var(--bg-deep) 100%);
+  display:flex;flex-direction:column;}
+.screen-sheen{position:absolute;inset:0;pointer-events:none;z-index:35;
+  background:linear-gradient(160deg,rgba(255,255,255,.05),transparent 30%);}
+
+header{padding:14px 18px 10px;background:rgba(5,14,10,.78);backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);position:relative;z-index:10;}
+.brand-row{display:flex;justify-content:space-between;align-items:center;}
+.brand-lockup{display:flex;align-items:center;gap:9px;}
+.logo-mark{width:30px;height:30px;flex-shrink:0;}
+.logo-mark-lg{width:52px;height:52px;}
+.brand-text{display:flex;align-items:center;gap:8px;}
+.logo-ur{font-size:1.5rem;color:var(--gold);padding-bottom:2px;}
+.logo-en{font-family:'Manrope',sans-serif;font-weight:800;font-size:1rem;color:var(--ink);}
+.badge{font-family:'Manrope',sans-serif;font-size:.6rem;font-weight:700;padding:4px 11px;border:1px solid var(--gold);
+  border-radius:999px;color:var(--gold);background:var(--gold-tint);white-space:nowrap;}
+.city-subtitle{font-size:.76rem;color:var(--text-dim);margin-top:6px;}
+
+.viewport{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:14px;position:relative;z-index:5;}
+.screen{display:none;flex-direction:column;gap:14px;flex:1;}
+.screen.active{display:flex;animation:rise .4s ease;}
+@keyframes rise{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+.card{background:linear-gradient(160deg,rgba(255,255,255,.05),rgba(255,255,255,.015));
+  border:1px solid var(--line);border-left:3px solid var(--mint);border-radius:14px;padding:15px;
+  box-shadow:0 8px 22px rgba(0,0,0,.28);}
+.card-label{font-family:'Manrope',sans-serif;font-weight:700;font-size:.95rem;margin-bottom:9px;color:var(--ink);}
+.card-label small{display:block;font-family:'Inter';font-size:.62rem;font-weight:500;color:var(--text-dim);margin-top:2px;}
+.legend{display:flex;justify-content:space-between;font-size:.66rem;color:var(--text-dim);margin-top:8px;}
+.fine{font-size:.7rem;color:var(--text-dim);line-height:1.6;margin-top:6px;}
+
+/* ---- FX live panel ---- */
+.fx-box{position:relative;height:122px;border-radius:12px;overflow:hidden;border:1px solid var(--line);
+  background:linear-gradient(180deg,#1c3b2c 0%,#14291f 60%,#0e1d16 100%);}
+.fx-tagrow{position:absolute;top:9px;left:9px;right:9px;display:flex;justify-content:space-between;align-items:center;z-index:3;}
+.fx-chip{font-size:.64rem;font-weight:700;padding:3px 9px;border-radius:999px;background:rgba(5,14,10,.7);color:#fff;}
+.fx-hill{position:absolute;inset:0;width:100%;height:100%;}
+.fx-hill path{fill:#2c5942;opacity:.7;}
+.fx-water{position:absolute;left:-30%;right:-30%;bottom:0;height:var(--fx-h,8%);display:none;
+  transition:height .9s cubic-bezier(.4,0,.2,1);}
+[data-type="flood"] .fx-water{display:block;}
+.fx-wave{position:absolute;bottom:0;left:0;width:200%;height:46px;opacity:.85;
+  animation:waveMove var(--fx-s,6s) linear infinite;fill:#1F8F6E;}
+.fx-wave2{opacity:.45;bottom:6px;animation-duration:calc(var(--fx-s,6s) * 1.5);animation-direction:reverse;}
+@keyframes waveMove{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+[data-sev="safe"] .fx-wave{fill:var(--safe);}
+[data-sev="rising"] .fx-wave{fill:var(--rising);}
+[data-sev="danger"] .fx-wave{fill:var(--danger);}
+.fx-rocks{position:absolute;inset:0;display:none;}
+[data-type="landslide"] .fx-rocks{display:block;}
+.rock{position:absolute;top:14%;width:10px;height:10px;border-radius:2px;background:#6E5A3C;
+  animation:slide var(--fx-s,4s) linear infinite;}
+.r1{left:8%;animation-delay:0s;} .r2{left:20%;width:7px;height:7px;animation-delay:.8s;}
+.r3{left:14%;width:12px;height:12px;animation-delay:1.5s;} .r4{left:26%;width:8px;height:8px;animation-delay:.4s;}
+.r5{left:5%;width:9px;height:9px;animation-delay:1.1s;}
+@keyframes slide{0%{transform:translate(0,0) rotate(0deg);opacity:.9;}100%{transform:translate(85px,78px) rotate(240deg);opacity:.15;}}
+.fx-dust{position:absolute;left:38%;bottom:8%;width:50px;height:20px;border-radius:50%;
+  background:radial-gradient(ellipse,rgba(200,180,140,.4),transparent 70%);
+  animation:dustPulse var(--fx-s,4s) ease-in-out infinite;}
+@keyframes dustPulse{0%,100%{opacity:.25;transform:scale(.85);}50%{opacity:.65;transform:scale(1.15);}}
+[data-type="landslide"][data-sev="safe"] .rock{background:var(--safe);}
+[data-type="landslide"][data-sev="rising"] .rock{background:var(--rising);}
+[data-type="landslide"][data-sev="danger"] .rock{background:var(--danger);}
+.fx-barrier{position:absolute;right:16%;bottom:14%;width:76px;height:56px;display:none;}
+[data-type="blocked"] .fx-barrier{display:block;}
+.barrier-post{position:absolute;left:6px;bottom:0;width:6px;height:44px;background:#4B4B3E;border-radius:2px;}
+.barrier-arm{position:absolute;left:9px;bottom:42px;width:58px;height:8px;border-radius:3px;
+  background:repeating-linear-gradient(90deg,var(--fx-arm-c,#E1543A) 0 10px,#0e1d16 10px 20px);
+  transform-origin:0% 50%;transform:rotate(var(--fx-arm,-65deg));
+  transition:transform .85s cubic-bezier(.34,1.56,.64,1), background .5s ease;}
+[data-sev="safe"] .barrier-arm{--fx-arm:-65deg;--fx-arm-c:var(--safe);}
+[data-sev="rising"] .barrier-arm{--fx-arm:-24deg;--fx-arm-c:var(--rising);}
+[data-sev="danger"] .barrier-arm{--fx-arm:2deg;--fx-arm-c:var(--danger);}
+.barrier-warn{position:absolute;left:30px;bottom:-6px;font-size:1rem;opacity:0;transition:opacity .4s ease;}
+[data-sev="danger"] .barrier-warn{opacity:1;animation:warnPulse 1.3s ease-in-out infinite;}
+@keyframes warnPulse{0%,100%{opacity:.55;}50%{opacity:1;}}
+
+.form-group{display:flex;flex-direction:column;gap:6px;}
+.form-group label{font-size:.85rem;font-weight:600;color:var(--ink);}
+.form-group label small{display:block;font-size:.64rem;font-weight:500;color:var(--text-dim);}
+.select-input{background:rgba(255,255,255,.055);border:1px solid var(--line);color:var(--ink);padding:11px 13px;
+  border-radius:9px;font-size:.92rem;outline:none;width:100%;
+  font-family:'Noto Nastaliq Urdu',serif;direction:rtl;text-align:right;}
+.select-input::placeholder{font-family:'Noto Nastaliq Urdu',serif;color:var(--text-dim);}
+.select-input:focus{outline:2px solid var(--mint);}
+select.select-input{-webkit-appearance:none;appearance:none;padding-left:34px;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2335D9A8' stroke-width='3'><path d='M6 9l6 6 6-6'/></svg>");
+  background-repeat:no-repeat;background-position:left 12px center;}
+select.select-input option{background:#0e1f18;color:var(--ink);font-family:'Noto Nastaliq Urdu',serif;}
+.tap-box{min-height:78px;border:1.5px dashed var(--line);border-radius:9px;display:flex;align-items:center;
+  justify-content:center;gap:6px;cursor:pointer;color:var(--text-dim);font-size:.76rem;text-align:center;
+  padding:8px;background:rgba(255,255,255,.03);font-family:'Noto Nastaliq Urdu',serif;}
+.type-selector,.severity-selector{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;}
+.type-btn,.severity-btn{padding:11px 4px;background:rgba(255,255,255,.04);border:1px solid var(--line);
+  border-radius:10px;color:var(--text-dim);cursor:pointer;font-size:.76rem;font-weight:700;display:flex;
+  flex-direction:column;align-items:center;gap:3px;font-family:'Noto Nastaliq Urdu',serif;transition:transform .15s ease;}
+.type-btn:active,.severity-btn:active,.btn:active,.btn-splash:active{transform:scale(.96);}
+.type-btn span,.severity-btn span{font-family:'Inter';font-size:.6rem;font-weight:500;color:var(--text-dim);}
+.type-btn.active{border-color:var(--mint);background:rgba(53,217,168,.12);color:var(--mint);
+  box-shadow:0 0 0 1px rgba(53,217,168,.25),0 0 14px rgba(53,217,168,.25);}
+.dot{width:9px;height:9px;border-radius:50%;}
+.severity-btn[data-val="safe"] .dot{background:var(--safe);}
+.severity-btn[data-val="rising"] .dot{background:var(--rising);}
+.severity-btn[data-val="danger"] .dot{background:var(--danger);}
+.severity-btn.active[data-val="safe"]{border-color:var(--safe);background:var(--safe-tint);color:var(--safe);}
+.severity-btn.active[data-val="rising"]{border-color:var(--rising);background:var(--rising-tint);color:var(--rising);}
+.severity-btn.active[data-val="danger"]{border-color:var(--danger);background:var(--danger-tint);color:var(--danger);}
+
+.btn{font-family:'Noto Nastaliq Urdu',serif;font-weight:700;padding:13px;border-radius:999px;border:none;
+  font-size:.92rem;cursor:pointer;width:100%;}
+.btn-main{background:linear-gradient(135deg,var(--primary),var(--primary-strong));color:#fff;
+  box-shadow:0 8px 20px rgba(31,181,132,.32);}
+.btn-emergency{background:linear-gradient(135deg,var(--danger),#c73f28);color:#fff;margin-top:6px;
+  box-shadow:0 8px 20px rgba(225,84,58,.35);animation:emgPulse 2.4s ease-in-out infinite;}
+@keyframes emgPulse{0%,100%{box-shadow:0 8px 20px rgba(225,84,58,.35);}50%{box-shadow:0 8px 28px rgba(225,84,58,.6);}}
+
+.threshold-meter{display:flex;flex-direction:column;gap:8px;}
+.meter-bar{height:8px;background:rgba(255,255,255,.08);border-radius:4px;overflow:hidden;}
+.meter-fill{height:100%;transition:width .6s ease,background .6s ease;}
+.report-entry{display:flex;align-items:center;justify-content:space-between;padding:9px 11px;
+  background:rgba(255,255,255,.04);border-radius:8px;border-left:3px solid var(--danger);font-size:.75rem;color:var(--ink);}
+.report-entry.rising{border-left-color:var(--rising);}
+.tag{font-size:.64rem;font-weight:700;padding:3px 8px;border-radius:999px;white-space:nowrap;}
+.tag-safe{background:var(--safe-tint);color:var(--safe);}
+.tag-rising{background:var(--rising-tint);color:var(--rising);}
+.tag-danger{background:var(--danger-tint);color:var(--danger);}
+.audio-card{background:linear-gradient(135deg,rgba(225,84,58,.12),rgba(255,255,255,.03));
+  border:1px solid rgba(225,84,58,.35);border-radius:12px;padding:15px;display:flex;flex-direction:column;gap:9px;}
+.btn-audio{background:linear-gradient(135deg,var(--danger),#c73f28);color:#fff;border:none;padding:11px;
+  border-radius:999px;font-weight:700;font-size:.8rem;cursor:pointer;display:flex;align-items:center;
+  justify-content:center;gap:7px;font-family:'Inter';}
+.directive{padding:14px;border-radius:10px;border:1px solid;border-left-width:3px;display:flex;flex-direction:column;gap:7px;}
+.directive.danger{background:var(--danger-tint);border-color:var(--danger);}
+.directive.rising{background:var(--rising-tint);border-color:var(--rising);}
+.directive.safe{background:var(--safe-tint);border-color:var(--safe);}
+.urdu-body{font-family:'Noto Nastaliq Urdu',serif;direction:rtl;line-height:1.95;font-size:1.02rem;color:var(--ink);}
+
+nav.bottom{border-top:1px solid var(--line);background:rgba(5,14,10,.85);backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);display:grid;grid-template-columns:repeat(5,1fr);
+  padding:8px 3px 12px;position:relative;z-index:10;}
+nav.bottom.hidden{display:none;}
+.nav-btn{background:none;border:none;color:var(--text-dim);display:flex;flex-direction:column;align-items:center;
+  gap:2px;padding:5px 2px;cursor:pointer;font-family:'Noto Nastaliq Urdu',serif;font-size:.82rem;}
+.nav-btn small{font-family:'Inter';font-size:.58rem;font-weight:600;}
+.nav-btn.active{color:var(--gold);}
+#pulse{position:absolute;border-radius:50%;pointer-events:none;opacity:0;z-index:4;}
+@keyframes pulseOut{0%{transform:scale(.2);opacity:.55;}100%{transform:scale(8);opacity:0;}}
+
+/* ---- splash ---- */
+#s-splash{gap:16px;}
+.intro-video-slot{position:relative;flex:1;min-height:250px;border-radius:18px;overflow:hidden;
+  background:linear-gradient(180deg,#173226,#0b1712);display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.splash-caption{display:flex;flex-direction:column;align-items:center;text-align:center;gap:7px;padding-bottom:4px;}
+.splash-title{font-size:2.9rem;color:var(--gold);}
+.splash-en{font-family:'Manrope',sans-serif;font-weight:800;font-size:.75rem;letter-spacing:.14em;color:var(--text-dim);}
+.splash-tag{font-size:.8rem;color:var(--text-dim);max-width:280px;line-height:1.9;}
+.tap-hint{font-size:.63rem;color:rgba(255,255,255,.32);margin-top:2px;}
+
+/* ---- about ---- */
+.about-wrap{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:12px;padding:6px 4px;}
+.about-headline{font-family:'Manrope',sans-serif;font-weight:800;font-size:2.5rem;letter-spacing:.02em;
+  background:linear-gradient(135deg,var(--gold),#F3DFA0);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.about-sub{font-family:'Manrope',sans-serif;font-weight:700;font-size:1rem;color:var(--ink);max-width:300px;line-height:1.5;}
+.about-body{font-family:'Inter',sans-serif;font-size:.86rem;color:var(--text-dim);line-height:1.8;max-width:320px;}
+.btn-explore{margin-top:8px;font-family:'Manrope',sans-serif;font-weight:800;padding:14px 32px;border-radius:999px;
+  border:none;background:linear-gradient(135deg,var(--primary-strong),var(--mint));color:#052018;font-size:.92rem;
+  cursor:pointer;box-shadow:0 10px 26px rgba(53,217,168,.35);letter-spacing:.02em;}
+.btn-video-player{margin-top:6px;font-family:'Manrope',sans-serif;font-weight:700;padding:12px 24px;border-radius:999px;
+  border:1px solid var(--mint);background:rgba(53,217,168,.1);color:var(--mint);font-size:.88rem;
+  cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;transition:all .2s;}
+.btn-video-player:hover{background:rgba(53,217,168,.2);}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+<div class="phone-shell">
+  <div class="notch"></div>
+  <div class="side-btn vol-up"></div>
+  <div class="side-btn vol-down"></div>
+  <div class="side-btn power"></div>
+
+  <div class="app-frame" id="app-frame">
+    <div class="screen-sheen"></div>
+    <header>
+      <div class="brand-row">
+        <div class="brand-lockup">
+          <svg viewBox="0 0 60 60" class="logo-mark" aria-hidden="true">
+            <path d="M6 44 C20 44 25 30 29 30" stroke="var(--mint)" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+            <path d="M6 52 C20 52 25 31 29 30" stroke="var(--mint)" stroke-width="4.5" fill="none" stroke-linecap="round" opacity=".45"/>
+            <path d="M29 30 C40 30 46 30 54 30" stroke="var(--gold)" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <circle cx="29" cy="30" r="4.2" fill="var(--danger)"/>
+          </svg>
+          <div class="brand-text"><span class="ur logo-ur">سنگم</span><span class="logo-en">Sangam</span></div>
+        </div>
+        <div class="badge" id="live-clock">--:--</div>
+      </div>
+      <div class="city-subtitle ur">مظفرآباد کمیونٹی وارننگ نیٹ ورک</div>
+    </header>
+
+    <main class="viewport">
+
+      <!-- SCREEN 1: SPLASH -->
+      <section id="s-splash" class="screen active">
+        <div class="intro-video-slot" onclick="skipIntro()">
+          <video autoplay muted loop playsinline src="exintro.mp4" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:1;"></video>
+        </div>
+        <div class="splash-caption">
+          <div class="ur splash-title">سنگم</div>
+          <div class="splash-en">SANGAM · MUZAFFARABAD</div>
+          <p class="ur splash-tag">جب پل خطرے میں ہوں، خبر سب سے پہلے پہنچے</p>
+        </div>
+      </section>
+
+      <!-- SCREEN 2: ABOUT -->
+      <section id="s-about" class="screen">
+        <div class="about-wrap">
+          <svg viewBox="0 0 60 60" class="logo-mark logo-mark-lg" aria-hidden="true">
+            <path d="M6 44 C20 44 25 30 29 30" stroke="var(--mint)" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+            <path d="M6 52 C20 52 25 31 29 30" stroke="var(--mint)" stroke-width="4.5" fill="none" stroke-linecap="round" opacity=".45"/>
+            <path d="M29 30 C40 30 46 30 54 30" stroke="var(--gold)" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <circle cx="29" cy="30" r="4.2" fill="var(--danger)"/>
+          </svg>
+          <h1 class="about-headline">SANGAM</h1>
+          <p class="about-sub">Muzaffarabad ka pehla community flood aur landslide warning network</p>
+          <p class="about-body">Muzaffarabad do dariyaon ke sangam par majood hai, jahan khatra badhne par shehar do hisson mein bat jata hai. Sangam ek community-run warning system hai — log khud report karte hain, aur alert mosque ke loudspeaker tak pohanch jata hai, koi smartphone zaroori nahi.</p>
+          <button class="btn-explore" onclick="enterApp()">Open Prototype →</button>
+          <button class="btn-video-player" onclick="openVideoPlayer()">▶ Play Video</button>
+        </div>
+      </section>
+
+      <section id="s-home" class="screen">
+        <div class="fx-box" data-type="flood" data-sev="safe">
+          <div class="fx-tagrow"><span class="fx-chip ur" id="fx-chip-type">🌊 سیلاب</span><span class="fx-chip ur" id="fx-chip-sev">محفوظ</span></div>
+          <svg class="fx-hill" viewBox="0 0 300 122" preserveAspectRatio="none"><path d="M0,122 L45,72 L95,98 L150,55 L200,90 L250,65 L300,95 L300,122 Z"/></svg>
+          <div class="fx-water"><svg class="fx-wave" viewBox="0 0 400 46" preserveAspectRatio="none"><path d="M0,20 Q50,4 100,20 T200,20 T300,20 T400,20 V46 H0 Z"/></svg><svg class="fx-wave fx-wave2" viewBox="0 0 400 46" preserveAspectRatio="none"><path d="M0,20 Q50,36 100,20 T200,20 T300,20 T400,20 V46 H0 Z"/></svg></div>
+          <div class="fx-rocks"><div class="rock r1"></div><div class="rock r2"></div><div class="rock r3"></div><div class="rock r4"></div><div class="rock r5"></div><div class="fx-dust"></div></div>
+          <div class="fx-barrier"><div class="barrier-post"></div><div class="barrier-arm"></div><span class="barrier-warn">⚠</span></div>
+        </div>
+        <div class="card" style="position:relative;overflow:hidden;">
+          <div class="card-label ur">پلوں کی حالت<small>Chokepoint status — live</small></div>
+          <svg viewBox="0 0 300 150" style="width:100%;">
+            <path d="M15,35 C85,35 115,75 148,75" stroke="var(--text-dim)" stroke-width="2.5" fill="none" opacity=".55"/>
+            <path d="M15,115 C85,115 115,77 148,75" stroke="var(--text-dim)" stroke-width="2.5" fill="none" opacity=".55"/>
+            <path d="M148,75 C205,75 245,75 285,75" stroke="var(--text-dim)" stroke-width="3.5" fill="none" opacity=".4"/>
+            <text x="148" y="98" fill="var(--gold)" font-size="9" text-anchor="middle" font-family="Manrope">سنگم</text>
+            <circle id="p-naluchi" cx="148" cy="75" r="8" fill="var(--safe)" stroke="#0e1d16" stroke-width="1.5" opacity=".95"/>
+            <circle id="p-neelum" cx="85" cy="50" r="6.5" fill="var(--safe)" stroke="#0e1d16" stroke-width="1.5" opacity=".95"/>
+            <circle id="p-chehla" cx="220" cy="75" r="6.5" fill="var(--safe)" stroke="#0e1d16" stroke-width="1.5" opacity=".95"/>
+            <text x="148" y="60" fill="var(--ink)" font-size="9" text-anchor="middle">نلوچھی</text>
+            <text x="85" y="36" fill="var(--ink)" font-size="9" text-anchor="middle">نیلم</text>
+            <text x="220" y="60" fill="var(--ink)" font-size="9" text-anchor="middle">چہلہ بانڈی</text>
+          </svg>
+          <div class="legend"><span>🟢 محفوظ</span><span>🟠 بڑھ رہا</span><span>🔴 خطرہ</span></div>
+          <div id="pulse"></div>
+        </div>
+        <p class="fine ur">تمام مقام ابھی محفوظ ہیں۔ رپورٹ بھیجنے پر متعلقہ مقام کی حالت فوراً بدل جاتی ہے۔</p>
+        <button class="btn btn-main ur" onclick="switchTab('s-report')">+ رپورٹ بھیجیں</button>
+      </section>
+
+      <section id="s-report" class="screen">
+        <div class="fx-box" data-type="flood" data-sev="danger">
+          <div class="fx-tagrow"><span class="fx-chip ur" id="fx-chip-type2">🌊 سیلاب</span><span class="fx-chip ur" id="fx-chip-sev2">خطرہ</span></div>
+          <svg class="fx-hill" viewBox="0 0 300 122" preserveAspectRatio="none"><path d="M0,122 L45,72 L95,98 L150,55 L200,90 L250,65 L300,95 L300,122 Z"/></svg>
+          <div class="fx-water"><svg class="fx-wave" viewBox="0 0 400 46" preserveAspectRatio="none"><path d="M0,20 Q50,4 100,20 T200,20 T300,20 T400,20 V46 H0 Z"/></svg><svg class="fx-wave fx-wave2" viewBox="0 0 400 46" preserveAspectRatio="none"><path d="M0,20 Q50,36 100,20 T200,20 T300,20 T400,20 V46 H0 Z"/></svg></div>
+          <div class="fx-rocks"><div class="rock r1"></div><div class="rock r2"></div><div class="rock r3"></div><div class="rock r4"></div><div class="rock r5"></div><div class="fx-dust"></div></div>
+          <div class="fx-barrier"><div class="barrier-post"></div><div class="barrier-arm"></div><span class="barrier-warn">⚠</span></div>
+        </div>
+        <div class="card">
+          <div class="card-label ur">کیا مسئلہ ہے؟<small>What's happening</small></div>
+          <div class="form-group" style="margin-bottom:12px;">
+            <label class="ur">قسم<small>Type</small></label>
+            <div class="type-selector">
+              <button class="type-btn active ur" data-val="flood" onclick="setType('flood',this)">🌊<br>سیلاب<span>Flood</span></button>
+              <button class="type-btn ur" data-val="landslide" onclick="setType('landslide',this)">⛰️<br>لینڈ سلائیڈنگ<span>Landslide</span></button>
+              <button class="type-btn ur" data-val="blocked" onclick="setType('blocked',this)">🚧<br>راستہ بند<span>Blocked</span></button>
+            </div>
+          </div>
+          <div class="form-group" style="margin-bottom:12px;">
+            <label class="ur">مقام<small>Where</small></label>
+            <select class="select-input" id="loc-select">
+              <option value="naluchi">نلوچھی پل</option>
+              <option value="neelum">نیلم پل</option>
+              <option value="chehla">چہلہ بانڈی</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom:12px;">
+            <label class="ur">تصویر<small>Photo</small></label>
+            <div class="tap-box ur" onclick="simUpload()"><span id="photo-status">📷 تصویر لگائیں</span></div>
+          </div>
+          <div class="form-group" style="margin-bottom:14px;">
+            <label class="ur">یا آواز کا پیغام<small>Or, voice note</small></label>
+            <div class="tap-box ur" onclick="simVoice()"><span id="voice-status">🎤 ریکارڈ کرنے کے لیے دبائیں</span></div>
+          </div>
+          <div class="form-group" style="margin-bottom:14px;">
+            <label class="ur">شدت<small>Severity</small></label>
+            <div class="severity-selector">
+              <button class="severity-btn ur" data-val="safe" onclick="setSev('safe',this)"><div class="dot"></div>محفوظ<span>Safe</span></button>
+              <button class="severity-btn ur" data-val="rising" onclick="setSev('rising',this)"><div class="dot"></div>بڑھ رہا<span>Rising</span></button>
+              <button class="severity-btn active ur" data-val="danger" onclick="setSev('danger',this)"><div class="dot"></div>خطرہ<span>Danger</span></button>
+            </div>
+          </div>
+          <button class="btn btn-main ur" onclick="submitReport()">رپورٹ بھیجیں</button>
+        </div>
+      </section>
+
+      <section id="s-verify" class="screen">
+        <div class="card" id="status-banner" style="text-align:center;border-left-color:var(--safe);">
+          <div style="font-size:1.8rem;" id="status-icon">🟢</div>
+          <div class="ur" style="font-size:1.2rem;font-weight:700;" id="status-word">محفوظ</div>
+          <div style="font-size:.68rem;color:var(--text-dim);" id="status-sub">Safe</div>
+        </div>
+        <div class="card">
+          <div class="card-label ur">تصدیق<small>Community verification threshold</small></div>
+          <div class="threshold-meter">
+            <div style="display:flex;justify-content:space-between;font-size:.74rem;">
+              <span id="th-loc" class="ur">نلوچھی پل</span><span id="th-count" class="ur" style="color:var(--safe);font-weight:700;">اپڈیٹ موصول</span>
+            </div>
+            <div class="meter-bar"><div class="meter-fill" id="meter-fill" style="width:20%;background:var(--safe);"></div></div>
+            <p class="fine ur">تین آزاد رپورٹس آنے پر ہی الرٹ بھیجا جاتا ہے، ایک غلط رپورٹ سے پورا نظام متاثر نہیں ہوتا۔</p>
+          </div>
+        </div>
+        <div class="card" id="emg-card" style="display:none;border-left-color:var(--danger);">
+          <div class="card-label ur" style="color:var(--danger);">🚑 ایمرجنسی درخواست</div>
+          <p class="urdu-body" style="color:var(--danger);" id="emg-addr">پتہ: —</p>
+          <p class="urdu-body" style="color:var(--danger);" id="emg-need">درکار: —</p>
+          <p class="fine" id="emg-time">وقت: —</p>
+        </div>
+        <div class="card">
+          <div class="card-label ur">رپورٹس<small>Live feed — newest first</small></div>
+          <div style="display:flex;flex-direction:column;gap:7px;" id="reports-list">
+            <div class="report-entry"><span class="ur">دکاندار، نلوچھی مشرقی جانب <span style="color:var(--text-dim);">· کل، 6:40 شام</span></span><span class="tag tag-danger">RED</span></div>
+            <div class="report-entry"><span class="ur">ڈرائیور، چٹر جانب <span style="color:var(--text-dim);">· کل، 6:22 شام</span></span><span class="tag tag-danger">RED</span></div>
+            <div class="report-entry rising"><span class="ur">رہائشی، لوئر پلیٹ <span style="color:var(--text-dim);">· کل، 5:55 شام</span></span><span class="tag tag-rising">AMBER</span></div>
+          </div>
+        </div>
+        <div class="audio-card">
+          <div style="font-size:.7rem;font-weight:700;color:var(--danger);">کوآرڈینیٹر: اعلان سے پہلے سنیں</div>
+          <div class="urdu-body" style="color:var(--danger);" id="audio-text">اہلِ محلہ! نلوچھی پل پر پانی خطرناک سطح تک پہنچ چکا ہے۔ پل کی طرف ہرگز نہ جائیں۔</div>
+          <button class="btn-audio" onclick="playAudio()">🔊 <span id="audio-label" class="ur">پیغام سنیں</span></button>
+          <p class="fine">پروٹو ٹائپ میں یہ آواز کمپیوٹر کی ہے — اصل نظام میں ایک انسان کی ریکارڈ شدہ آواز ہوگی۔</p>
+        </div>
+      </section>
+
+      <section id="s-emergency" class="screen">
+        <div class="card" style="border-left-color:var(--danger);">
+          <div class="card-label ur" style="color:var(--danger);">🚑 ایمرجنسی درخواست<small>Skips verification — goes straight to coordinator</small></div>
+          <div class="form-group" style="margin-bottom:12px;">
+            <label class="ur">مریض کہاں ہے؟ پتہ لکھیں<small>Patient's address</small></label>
+            <input class="select-input" id="e-addr" placeholder="مثال: گھر نمبر، گلی، نلوچھی کے قریب">
+          </div>
+          <div class="form-group" style="margin-bottom:14px;">
+            <label class="ur">کیا درکار ہے؟ خود لکھیں<small>What's needed</small></label>
+            <textarea class="select-input" id="e-need" style="min-height:70px;" placeholder="مثال: گاڑی چاہیے، CPR، first aid"></textarea>
+          </div>
+          <button class="btn btn-emergency ur" onclick="submitEmergency()">فوری بھیجیں</button>
+        </div>
+      </section>
+
+      <section id="s-action" class="screen">
+        <div class="directive danger"><div style="display:flex;justify-content:space-between;"><span class="tag tag-danger ur">خطرہ</span><span style="font-size:.7rem;color:var(--text-dim);">نلوچھی پل</span></div><div class="urdu-body">پل کے قریب نہ جائیں۔ محفوظ مقام کی طرف منتقل ہوں۔</div></div>
+        <div class="directive rising"><div style="display:flex;justify-content:space-between;"><span class="tag tag-rising ur">وارننگ</span><span style="font-size:.7rem;color:var(--text-dim);">نیلم پل</span></div><div class="urdu-body">پانی کی سطح بڑھ رہی ہے۔ ضروری سامان اوپر رکھیں۔</div></div>
+        <div class="directive safe"><div style="display:flex;justify-content:space-between;"><span class="tag tag-safe ur">محفوظ</span><span style="font-size:.7rem;color:var(--text-dim);">چہلہ بانڈی</span></div><div class="urdu-body">فی الحال کوئی خطرہ نہیں، معمول کے مطابق آمدورفت جاری رکھیں۔</div></div>
+        <div class="card">
+          <div class="card-label" style="font-size:.85rem;">Why this matters</div>
+          <p style="font-size:.73rem;color:var(--text-dim);line-height:1.6;">Muzaffarabad's crossings get cut off by both floods and landslides — flash floods and landslides across AJK and GB killed ten people in 2025 alone. The emergency flow exists for the same reason: when a crossing is cut, reaching CMH or AIMS becomes a matter of time.</p>
+        </div>
+      </section>
+
+    </main>
+
+    <nav class="bottom hidden">
+      <button class="nav-btn active ur" id="n-s-home" onclick="switchTab('s-home')">حالت<small>Status</small></button>
+      <button class="nav-btn ur" id="n-s-report" onclick="switchTab('s-report')">رپورٹ<small>Report</small></button>
+      <button class="nav-btn ur" id="n-s-verify" onclick="switchTab('s-verify')">تصدیق<small>Verify</small></button>
+      <button class="nav-btn ur" id="n-s-action" onclick="switchTab('s-action')">ہدایات<small>Action</small></button>
+      <button class="nav-btn ur" style="color:var(--danger);" id="n-s-emergency" onclick="switchTab('s-emergency')">🚑<small>Emergency</small></button>
+    </nav>
+    <div class="home-indicator"></div>
+  </div>
+</div>
+</div>
+
+<!-- Modal ya Video Player overlay -->
+<div id="videoModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:999;align-items:center;justify-content:center;padding:20px;">
+  <div style="position:relative;width:100%;max-width:400px;background:#0b1f17;border-radius:16px;padding:12px;border:1px solid var(--line);">
+    <button onclick="closeVideoPlayer()" style="position:absolute;top:8px;right:12px;background:none;border:none;color:#fff;font-size:1.2rem;cursor:pointer;">&times;</button>
+    <h3 style="color:var(--gold);font-family:'Manrope',sans-serif;margin-bottom:10px;text-align:center;font-size:0.95rem;">Video Player</h3>
+    <video id="modalVideo" controls playsinline style="width:100%;border-radius:10px;background:#000;">
+      <source src="videoproject.mp4" type="video/mp4">
+      Aapka browser video tag ko support nahi karta.
+    </video>
+  </div>
+</div>
+
+<script>
+let selType='flood', selSev='danger';
+const typeUr={flood:'سیلاب',landslide:'لینڈ سلائیڈنگ',blocked:'راستہ بند'};
+const typeIcon={flood:'🌊',landslide:'⛰️',blocked:'🚧'};
+const sevUr={safe:'محفوظ',rising:'بڑھ رہا',danger:'خطرہ'};
+const locUr={naluchi:'نلوچھی پل',neelum:'نیلم پل',chehla:'چہلہ بانڈی'};
+const pinId={naluchi:'p-naluchi',neelum:'p-neelum',chehla:'p-chehla'};
+const colors={safe:'#33C08A',rising:'#E0A63E',danger:'#E1543A'};
+
+function fmtTime(d){
+  return d.toLocaleDateString('en-GB',{day:'2-digit',month:'short'})+', '+
+         d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+}
+function tickClock(){ document.getElementById('live-clock').innerText=fmtTime(new Date()); }
+setInterval(tickClock,1000); tickClock();
+
+function switchTab(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const navBtn=document.getElementById('n-'+id);
+  if(navBtn) navBtn.classList.add('active');
+}
+
+let splashTimer=setTimeout(skipIntro,5400);
+function skipIntro(){ clearTimeout(splashTimer); switchTab('s-about'); }
+
+function enterApp(){
+  document.querySelector('nav.bottom').classList.remove('hidden');
+  switchTab('s-home');
+}
+
+function openVideoPlayer(){
+  const modal = document.getElementById('videoModal');
+  const vid = document.getElementById('modalVideo');
+  modal.style.display = 'flex';
+  vid.play().catch(e => console.log("Autoplay blocked or needs interaction"));
+}
+
+function closeVideoPlayer(){
+  const modal = document.getElementById('videoModal');
+  const vid = document.getElementById('modalVideo');
+  vid.pause();
+  vid.currentTime = 0;
+  modal.style.display = 'none';
+}
+
+function updateFX(type,sev){
+  const speeds={safe:'8s',rising:'4.5s',danger:'2.2s'};
+  const heights={safe:'14%',rising:'42%',danger:'72%'};
+  document.querySelectorAll('.fx-box').forEach(box=>{
+    box.setAttribute('data-type',type); box.setAttribute('data-sev',sev);
+    box.style.setProperty('--fx-s',speeds[sev]); box.style.setProperty('--fx-h',heights[sev]);
+  });
+  document.getElementById('fx-chip-type').innerText=typeIcon[type]+' '+typeUr[type];
+  document.getElementById('fx-chip-sev').innerText=sevUr[sev];
+  document.getElementById('fx-chip-type2').innerText=typeIcon[type]+' '+typeUr[type];
+  document.getElementById('fx-chip-sev2').innerText=sevUr[sev];
+}
+function setType(v,el){selType=v;document.querySelectorAll('.type-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');updateFX(selType,selSev);}
+function setSev(v,el){selSev=v;document.querySelectorAll('.severity-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');updateFX(selType,selSev);}
+function simUpload(){document.getElementById('photo-status').innerText='✅ تصویر لگا دی گئی';}
+let voiceOn=false;
+function simVoice(){
+  const el=document.getElementById('voice-status');
+  if(!voiceOn){el.innerText='🔴 ریکارڈ ہو رہا ہے...';setTimeout(()=>{el.innerText='✅ آواز کا پیغام محفوظ ہو گیا';voiceOn=true;},1100);}
+  else{el.innerText='🎤 ریکارڈ کرنے کے لیے دبائیں';voiceOn=false;}
+}
+function submitEmergency(){
+  document.getElementById('emg-addr').innerText='پتہ: '+(document.getElementById('e-addr').value||'درج نہیں کیا گیا');
+  document.getElementById('emg-need').innerText='درکار: '+(document.getElementById('e-need').value||'درج نہیں کیا گیا');
+  document.getElementById('emg-time').innerText='وقت: '+fmtTime(new Date())+' (device time)';
+  document.getElementById('emg-card').style.display='flex';
+  document.getElementById('emg-card').style.flexDirection='column';
+  switchTab('s-verify');
+}
+function updateBanner(sev){
+  const map={safe:{icon:'🟢',word:'محفوظ',sub:'Safe'},rising:{icon:'🟠',word:'بڑھ رہا ہے',sub:'Rising'},danger:{icon:'🔴',word:'خطرہ',sub:'Danger'}};
+  const b=document.getElementById('status-banner');
+  b.style.borderLeftColor=colors[sev];
+  document.getElementById('status-icon').innerText=map[sev].icon;
+  const w=document.getElementById('status-word'); w.innerText=map[sev].word; w.style.color=colors[sev];
+  document.getElementById('status-sub').innerText=map[sev].sub;
+}
+function pulseAt(cx,cy){
+  const p=document.getElementById('pulse');
+  p.style.left=cx+'%'; p.style.top=cy+'%'; p.style.width='14px'; p.style.height='14px';
+  p.style.background=colors[selSev]; p.style.marginLeft='-7px'; p.style.marginTop='-7px';
+  p.style.animation='none'; void p.offsetWidth; p.style.animation='pulseOut .9s ease-out';
+}
+function submitReport(){
+  document.getElementById('emg-card').style.display='none';
+  const loc=document.getElementById('loc-select').value;
+  document.getElementById(pinId[loc]).setAttribute('fill',colors[selSev]);
+  updateBanner(selSev);
+  const countText={safe:'اپڈیٹ موصول',rising:'2/3 رپورٹس',danger:'3/3 رپورٹس'};
+  const widthMap={safe:'20%',rising:'66%',danger:'100%'};
+  document.getElementById('th-count').innerText=countText[selSev];
+  document.getElementById('th-count').style.color=colors[selSev];
+  document.getElementById('meter-fill').style.width=widthMap[selSev];
+  document.getElementById('meter-fill').style.background=colors[selSev];
+  document.getElementById('th-loc').innerText=locUr[loc];
+  const msgs={
+    safe:'اہلِ محلہ، '+locUr[loc]+' پر صورتحال معمول کے مطابق ہے۔',
+    rising:'اہلِ محلہ، '+locUr[loc]+' کے قریب '+typeUr[selType]+' کا خطرہ بڑھ رہا ہے۔ ضروری سامان محفوظ جگہ منتقل کریں۔',
+    danger:'اہلِ محلہ! '+locUr[loc]+' پر '+typeUr[selType]+' کی وجہ سے شدید خطرہ ہے۔ اس طرف ہرگز نہ جائیں۔'
+  };
+  document.getElementById('audio-text').innerText=msgs[selSev];
+  const posMap={naluchi:{x:49,y:50},neelum:{x:28,y:33},chehla:{x:73,y:50}};
+  pulseAt(posMap[loc].x,posMap[loc].y);
+  const tagClass={safe:'tag-safe',rising:'tag-rising',danger:'tag-danger'};
+  const rowClass={safe:'',rising:'rising',danger:''};
+  const entry=document.createElement('div');
+  entry.className='report-entry '+rowClass[selSev];
+  entry.style.borderLeftColor=colors[selSev];
+  entry.innerHTML='<span class="ur">'+typeIcon[selType]+' '+locUr[loc]+' <span style="color:var(--text-dim);">· ابھی، '+fmtTime(new Date())+'</span></span>'+
+    '<span class="tag '+tagClass[selSev]+'">'+sevUr[selSev]+'</span>';
+  document.getElementById('reports-list').prepend(entry);
+  switchTab('s-verify');
+}
+let playing=false, voiceList=[];
+function loadVoices(){ voiceList=window.speechSynthesis.getVoices(); }
+if('speechSynthesis' in window){ window.speechSynthesis.onvoiceschanged=loadVoices; loadVoices(); }
+function pickVoice(){
+  if(!voiceList.length) voiceList=window.speechSynthesis.getVoices();
+  return voiceList.find(v=>/^ur/i.test(v.lang)) || voiceList.find(v=>/^hi/i.test(v.lang)) ||
+         voiceList.find(v=>/^ar/i.test(v.lang)) || null;
+}
+function playAudio(){
+  const label=document.getElementById('audio-label');
+  if(playing){window.speechSynthesis.cancel();playing=false;label.innerText='پیغام سنیں';return;}
+  playing=true; label.innerText='چل رہا ہے...';
+  const u=new SpeechSynthesisUtterance(document.getElementById('audio-text').innerText);
+  u.lang='ur-PK'; u.rate=0.85; u.pitch=1;
+  const v=pickVoice(); if(v){ u.voice=v; u.lang=v.lang; }
+  u.onend=()=>{playing=false;label.innerText='پیغام سنیں';}; u.onerror=u.onend;
+  window.speechSynthesis.speak(u);
+}
+updateFX(selType,selSev);
+</script>
+</body>
+</html>
